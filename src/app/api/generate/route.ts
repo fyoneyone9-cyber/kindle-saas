@@ -12,7 +12,7 @@ import {
 
 export const maxDuration = 60;
 
-const GEMINI_API_KEY = "AIzaSyCMbtu9IJIGbml2KOv1Yjit9QP7TkmIgiA";
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY ?? "";
 
 // プラン別制限（サーバー側で強制）
 const PLAN_LIMITS: Record<string, { dailyLimit: number; maxChars: number }> = {
