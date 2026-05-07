@@ -16,10 +16,10 @@ const GEMINI_API_KEY = "AIzaSyCMbtu9IJIGbml2KOv1Yjit9QP7TkmIgiA";
 
 // プラン別制限（サーバー側で強制）
 const PLAN_LIMITS: Record<string, { dailyLimit: number; maxChars: number }> = {
-  free:     { dailyLimit: 1,   maxChars: 3000 },
-  light:    { dailyLimit: 3,   maxChars: 5000 },
-  standard: { dailyLimit: 5,   maxChars: 8000 },
-  premium:  { dailyLimit: 999, maxChars: 10000 },
+  free:     { dailyLimit: 1,  maxChars: 3000 },
+  light:    { dailyLimit: 2,  maxChars: 5000 },
+  standard: { dailyLimit: 3,  maxChars: 8000 },
+  premium:  { dailyLimit: 10, maxChars: 10000 },
 };
 const ADMIN_EMAIL = "f.yoneyone9@gmail.com";
 
