@@ -213,7 +213,7 @@ export async function POST(req: NextRequest) {
 
     // Gemini API で原稿生成
     const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-05-20" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const prompt = buildPrompt(theme, genre, maxChars);
     const result = await model.generateContent(prompt);
     const manuscript = result.response.text();
