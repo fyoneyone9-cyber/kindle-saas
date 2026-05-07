@@ -73,12 +73,9 @@ export default function Home() {
 
     const currentRemaining = getRemainingCount();
     if (currentRemaining <= 0) {
-      setError(
-        "本日の生成回数制限（3回）に達しました。明日また生成できます。"
-      );
+      setError("本日の生成回数制限（3回）に達しました。明日また生成できます。");
       return;
     }
-
     if (!theme.trim()) {
       setError("テーマを入力してください。");
       return;
@@ -152,7 +149,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50">
       {/* ヘッダー */}
-      <header className="bg-emerald-500 text-white shadow-md">
+      <header className="bg-emerald-600 text-white shadow-md">
         <div className="max-w-4xl mx-auto px-4 py-6">
           <div className="flex items-center gap-3">
             <span className="text-3xl">📚</span>
@@ -166,7 +163,167 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      {/* ヒーローセクション */}
+      <section className="bg-gradient-to-b from-emerald-600 to-emerald-500 text-white pb-12 pt-4">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <p className="text-4xl font-extrabold mt-4 leading-tight">
+            テーマを入力するだけで<br />
+            <span className="text-yellow-300">KDP入稿可能な原稿</span>が完成
+          </p>
+          <p className="mt-4 text-emerald-100 text-lg">
+            Gemini AIが5000〜8000字の電子書籍原稿をDOCX形式で自動生成。<br />
+            KDP入稿チートシートも同時出力するので、そのままKindleに出版できます。
+          </p>
+          <div className="mt-6 flex justify-center gap-4 flex-wrap">
+            <div className="bg-white/20 rounded-xl px-5 py-3 text-sm font-medium">
+              ⏱️ 生成時間：約30〜60秒
+            </div>
+            <div className="bg-white/20 rounded-xl px-5 py-3 text-sm font-medium">
+              📄 5000〜8000字の原稿
+            </div>
+            <div className="bg-white/20 rounded-xl px-5 py-3 text-sm font-medium">
+              📥 DOCX形式でダウンロード
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 特徴セクション */}
+      <section className="bg-white py-12 border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-xl font-bold text-gray-800 text-center mb-8">
+            🌟 Kindle本ファクトリーの特徴
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="flex gap-4 p-5 bg-emerald-50 rounded-2xl border border-emerald-100">
+              <span className="text-3xl">🤖</span>
+              <div>
+                <h3 className="font-bold text-gray-800">Gemini AIによる高品質な原稿生成</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Googleの最新AI「Gemini 2.5 Flash」が、読者に価値を届ける実践的な内容を自動執筆。
+                  5〜7章構成の読み応えある原稿を生成します。
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4 p-5 bg-emerald-50 rounded-2xl border border-emerald-100">
+              <span className="text-3xl">📋</span>
+              <div>
+                <h3 className="font-bold text-gray-800">KDP入稿チートシート付き</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  タイトル・サブタイトル・著者略歴・内容紹介・キーワード・カテゴリなど、
+                  KDPダッシュボードへの入力情報をJSONファイルで一式出力します。
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4 p-5 bg-emerald-50 rounded-2xl border border-emerald-100">
+              <span className="text-3xl">📁</span>
+              <div>
+                <h3 className="font-bold text-gray-800">DOCX形式でそのまま入稿</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Microsoft Word形式（.docx）でダウンロードできるため、
+                  Wordで加筆修正後にKDPへ直接入稿が可能です。
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4 p-5 bg-emerald-50 rounded-2xl border border-emerald-100">
+              <span className="text-3xl">🛡️</span>
+              <div>
+                <h3 className="font-bold text-gray-800">著作権はあなたに帰属</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  本ツールで生成した原稿の著作権はご利用者様に帰属します。
+                  Kindle出版後の印税もすべてあなたのものです。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 使い方ステップ */}
+      <section className="bg-gray-50 py-12 border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-xl font-bold text-gray-800 text-center mb-8">
+            🚀 使い方はたったの3ステップ
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-4 items-stretch">
+            {[
+              {
+                num: "1",
+                icon: "✍️",
+                title: "テーマとジャンルを入力",
+                desc: "書きたい本のテーマを入力し、ジャンルをボタンで選択するだけ。難しい設定は一切不要です。",
+              },
+              {
+                num: "2",
+                icon: "🤖",
+                title: "AIが原稿を自動生成",
+                desc: "「AIで原稿を生成する」ボタンを押すと、約30〜60秒で5000〜8000字の原稿が完成します。",
+              },
+              {
+                num: "3",
+                icon: "📤",
+                title: "ダウンロードしてKDPへ",
+                desc: "DOCXファイルをダウンロードし、KDPチートシートを参考にKindleへ出版するだけ！",
+              },
+            ].map((s) => (
+              <div
+                key={s.num}
+                className="flex-1 bg-white rounded-2xl border border-gray-200 p-5 shadow-sm relative"
+              >
+                <span className="absolute -top-3 -left-3 bg-emerald-500 text-white text-sm font-bold w-7 h-7 rounded-full flex items-center justify-center shadow">
+                  {s.num}
+                </span>
+                <div className="text-3xl mb-3">{s.icon}</div>
+                <h3 className="font-bold text-gray-800 mb-1">{s.title}</h3>
+                <p className="text-sm text-gray-600">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 対応ジャンル */}
+      <section className="bg-white py-10 border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-xl font-bold text-gray-800 text-center mb-6">
+            📚 対応ジャンル（例）
+          </h2>
+          <div className="flex flex-wrap gap-2 justify-center">
+            {[
+              "副業・収入アップ", "AI活用", "家計管理・節約", "自己啓発",
+              "ビジネス", "健康・美容", "育児・教育", "投資・資産運用",
+              "料理・レシピ", "旅行・体験記", "転職・キャリア", "英語学習",
+            ].map((g) => (
+              <span
+                key={g}
+                className="px-4 py-2 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-sm font-medium"
+              >
+                {g}
+              </span>
+            ))}
+            <span className="px-4 py-2 bg-gray-100 text-gray-500 border border-gray-200 rounded-full text-sm">
+              その他自由入力も可
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* 注意事項 */}
+      <section className="bg-amber-50 py-8 border-b border-amber-100">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-base font-bold text-amber-800 mb-3">⚠️ ご利用にあたって</h2>
+          <ul className="text-sm text-amber-800 space-y-2 list-disc list-inside">
+            <li>本ツールはKDP出版向けの原稿の「たたき台」を生成します。内容は必ずご自身で確認・加筆してからご利用ください。</li>
+            <li>1日の生成回数は<strong>3回まで</strong>です（無料プランの場合）。</li>
+            <li>生成には30〜60秒かかります。ボタンを連打せずお待ちください。</li>
+            <li>生成した原稿をそのままKDPに出版することは可能ですが、品質向上のため加筆修正を強くお勧めします。</li>
+            <li>生成中にページを閉じると原稿は失われます。必ずダウンロードしてから保存してください。</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* 生成フォーム */}
+      <div className="max-w-4xl mx-auto px-4 py-8" id="generate">
         {/* 使用制限バッジ */}
         <div className="flex justify-end mb-4">
           <span
@@ -183,15 +340,12 @@ export default function Home() {
 
         {/* 入力フォーム */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-6">
-          <h2 className="text-lg font-bold text-gray-800 mb-4">
-            📝 本の設定
-          </h2>
+          <h2 className="text-lg font-bold text-gray-800 mb-4">📝 本の設定</h2>
 
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                テーマ
-                <span className="text-red-500 ml-1">*</span>
+                テーマ<span className="text-red-500 ml-1">*</span>
               </label>
               <input
                 type="text"
@@ -202,26 +356,17 @@ export default function Home() {
                 disabled={loading}
                 maxLength={200}
               />
-              <p className="text-xs text-gray-500 mt-1">
-                {theme.length}/200文字
-              </p>
+              <p className="text-xs text-gray-500 mt-1">{theme.length}/200文字</p>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                ジャンル
-                <span className="text-red-500 ml-1">*</span>
+                ジャンル<span className="text-red-500 ml-1">*</span>
               </label>
               <div className="flex flex-wrap gap-2 mb-2">
                 {[
-                  "副業・収入アップ",
-                  "AI活用",
-                  "家計管理・節約",
-                  "自己啓発",
-                  "ビジネス",
-                  "健康・美容",
-                  "育児・教育",
-                  "投資・資産運用",
+                  "副業・収入アップ", "AI活用", "家計管理・節約", "自己啓発",
+                  "ビジネス", "健康・美容", "育児・教育", "投資・資産運用",
                 ].map((g) => (
                   <button
                     key={g}
@@ -250,7 +395,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* エラーメッセージ */}
           {error && (
             <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2">
               <span className="text-red-500 text-lg">⚠️</span>
@@ -258,7 +402,6 @@ export default function Home() {
             </div>
           )}
 
-          {/* 生成ボタン */}
           <button
             type="button"
             onClick={handleGenerate}
@@ -271,24 +414,9 @@ export default function Home() {
           >
             {loading ? (
               <span className="flex items-center justify-center gap-3">
-                <svg
-                  className="animate-spin h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  />
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                  />
+                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                 </svg>
                 {step || "生成中..."}
               </span>
@@ -307,81 +435,56 @@ export default function Home() {
         {/* 生成結果 */}
         {result && (
           <div className="space-y-4">
-            {/* 成功バナー */}
             <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-2xl">✅</span>
-                <h2 className="text-lg font-bold text-emerald-800">
-                  原稿の生成が完了しました！
-                </h2>
+                <h2 className="text-lg font-bold text-emerald-800">原稿の生成が完了しました！</h2>
               </div>
               <div className="flex flex-wrap gap-4 text-sm text-emerald-700">
                 <span>📖 タイトル: {result.title}</span>
-                <span>
-                  📊 文字数: {result.charCount.toLocaleString()}字
-                </span>
+                <span>📊 文字数: {result.charCount.toLocaleString()}字</span>
               </div>
             </div>
 
-            {/* ダウンロードボタン */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
-              <h3 className="text-base font-bold text-gray-800 mb-4">
-                📥 ダウンロード
-              </h3>
+              <h3 className="text-base font-bold text-gray-800 mb-4">📥 ダウンロード</h3>
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   type="button"
                   onClick={handleDownloadDocx}
                   className="flex-1 flex items-center justify-center gap-2 bg-emerald-500 text-white py-3 px-6 rounded-xl font-medium hover:bg-emerald-600 transition-colors shadow-sm"
                 >
-                  <span>📄</span>
-                  DOCX原稿ダウンロード
+                  <span>📄</span>DOCX原稿ダウンロード
                 </button>
                 <button
                   type="button"
                   onClick={handleDownloadKdp}
                   className="flex-1 flex items-center justify-center gap-2 bg-white text-emerald-700 border-2 border-emerald-500 py-3 px-6 rounded-xl font-medium hover:bg-emerald-50 transition-colors"
                 >
-                  <span>📋</span>
-                  KDP入稿チートシート
+                  <span>📋</span>KDP入稿チートシート
                 </button>
               </div>
             </div>
 
-            {/* プレビュー */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
-              <h3 className="text-base font-bold text-gray-800 mb-3">
-                👁️ 原稿プレビュー（最初の1000字）
-              </h3>
+              <h3 className="text-base font-bold text-gray-800 mb-3">👁️ 原稿プレビュー（最初の1000字）</h3>
               <div className="bg-gray-50 rounded-xl p-4 text-sm text-gray-700 leading-relaxed whitespace-pre-wrap font-mono max-h-64 overflow-y-auto border border-gray-200">
                 {result.preview}
                 {result.charCount > 1000 && (
-                  <span className="text-gray-400">
-                    {"\n\n"}... （続きはDOCXファイルでご確認ください）
-                  </span>
+                  <span className="text-gray-400">{"\n\n"}... （続きはDOCXファイルでご確認ください）</span>
                 )}
               </div>
             </div>
 
-            {/* KDPメタデータプレビュー */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
-              <h3 className="text-base font-bold text-gray-800 mb-3">
-                📑 KDP入稿情報プレビュー
-              </h3>
+              <h3 className="text-base font-bold text-gray-800 mb-3">📑 KDP入稿情報プレビュー</h3>
               <div className="bg-gray-50 rounded-xl p-4 max-h-64 overflow-y-auto border border-gray-200">
                 <table className="w-full text-sm">
                   <tbody>
                     {Object.entries(result.kdpMetadata).map(([key, value]) => (
-                      <tr
-                        key={key}
-                        className="border-b border-gray-200 last:border-0"
-                      >
-                        <td className="py-2 pr-4 font-medium text-gray-600 whitespace-nowrap w-40">
-                          {key}
-                        </td>
-                        <td className="py-2 text-gray-800">
-                          {String(value)}
-                        </td>
+                      <tr key={key} className="border-b border-gray-200 last:border-0">
+                        <td className="py-2 pr-4 font-medium text-gray-600 whitespace-nowrap w-40">{key}</td>
+                        <td className="py-2 text-gray-800">{String(value)}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -389,11 +492,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 次のステップ */}
             <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
-              <h3 className="font-bold text-amber-800 mb-3">
-                📌 次のステップ
-              </h3>
+              <h3 className="font-bold text-amber-800 mb-3">📌 次のステップ</h3>
               <ol className="space-y-2 text-sm text-amber-800">
                 <li className="flex items-start gap-2">
                   <span className="font-bold text-amber-600 min-w-[24px]">1.</span>
@@ -416,12 +516,9 @@ export default function Home() {
           </div>
         )}
 
-        {/* フッター */}
         <footer className="mt-12 text-center text-xs text-gray-400 pb-8">
           <p>Kindle本ファクトリー by NextraLabs</p>
-          <p className="mt-1">
-            本ツールで生成した原稿の著作権はご利用者様に帰属します。
-          </p>
+          <p className="mt-1">本ツールで生成した原稿の著作権はご利用者様に帰属します。</p>
         </footer>
       </div>
     </main>
