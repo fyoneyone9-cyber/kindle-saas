@@ -211,12 +211,25 @@ export async function POST(req: NextRequest) {
 
     const maxChars = PLAN_LIMITS[userPlan]?.maxChars ?? 3000;
 
-    // Gemini API で原稿生成
+    // Gemini API で原稿生成（503対策：最大3回リトライ）
     const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
     const prompt = buildPrompt(theme, genre, maxChars);
-    const result = await model.generateContent(prompt);
-    const manuscript = result.response.text();
+    let manuscript = "";
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const result = await model.generateContent(prompt);
+        manuscript = result.response.text();
+        break;
+      } catch (retryErr: unknown) {
+        const msg = retryErr instanceof Error ? retryErr.message : "";
+        if (attempt < 3 && msg.includes("503")) {
+          await new Promise(r => setTimeout(r, attempt * 3000)); // 3秒、6秒待機
+          continue;
+        }
+        throw retryErr;
+      }
+    }
 
     if (!manuscript || manuscript.length < 500) {
       return NextResponse.json({ error: "原稿の生成に失敗しました。再度お試しください。" }, { status: 500 });
