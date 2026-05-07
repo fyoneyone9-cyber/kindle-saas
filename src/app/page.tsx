@@ -104,7 +104,9 @@ export default function Home() {
       }
 
       incrementUsage();
-      setRemaining(getRemainingCount());
+      // サーバー側のremaining（Supabase）と同期
+      const serverRemaining = typeof data.remaining === "number" ? data.remaining : getRemainingCount();
+      setRemaining(Math.min(getRemainingCount(), serverRemaining));
       setResult(data);
       setStep("");
     } catch (err) {
