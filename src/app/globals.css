@@ -1,19 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono&family=Space+Grotesk:wght@600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg-base:        #050507;
+  --bg-surface:     #0d1117;
+  --bg-elevated:    #13141f;
+  --text-primary:   #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted:     #64748b;
+  --border-subtle:  #1e293b;
+  --border-default: #334155;
+  --emerald:        #10b981;
+  --emerald-dark:   #059669;
+  --emerald-light:  #34d399;
+  --emerald-glow:   #6ee7b7;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes emeraldPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(16, 185, 129, 0.3); }
+  50%       { box-shadow: 0 0 20px rgba(16, 185, 129, 0.6); }
+}
+
+.badge-pulse {
+  animation: emeraldPulse 2s ease-in-out infinite;
 }
