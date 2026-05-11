@@ -197,6 +197,21 @@ export default function Home() {
             />
             残り {remaining} / {DAILY_LIMIT} 回
           </span>
+          <a
+            href="https://membership-site-nextralabos.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-medium hidden sm:inline-flex items-center gap-1"
+            style={{
+              color: "#10b981",
+              textDecoration: "none",
+              border: "1px solid rgba(16,185,129,0.4)",
+              borderRadius: "6px",
+              padding: "4px 12px",
+            }}
+          >
+            ツール一覧 →
+          </a>
         </div>
       </header>
 
@@ -942,8 +957,37 @@ export default function Home() {
           color: "var(--text-muted)",
         }}
       >
-        <p>Kindle本ファクトリー by NextraLabs</p>
+        <p>
+          Kindle本ファクトリー by{" "}
+          <a
+            href="https://membership-site-nextralabos.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#10b981", textDecoration: "underline" }}
+          >
+            NextraLabs
+          </a>
+        </p>
         <p className="mt-1">本ツールで生成した原稿の著作権はご利用者様に帰属します。</p>
+        <p className="mt-2">
+          <a
+            href="https://membership-site-nextralabos.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: "#10b981",
+              textDecoration: "none",
+              border: "1px solid #10b981",
+              borderRadius: "6px",
+              padding: "4px 14px",
+              fontSize: "0.75rem",
+              display: "inline-block",
+              marginTop: "4px",
+            }}
+          >
+            🔗 NextraLabs 会員サイトはこちら →
+          </a>
+        </p>
       </footer>
     </main>
   );
